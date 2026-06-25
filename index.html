@@ -63,12 +63,12 @@
     .nav-links { display: flex; align-items: center; gap: 32px; }
     .nav-links a { font-size: 14px; color: var(--text-2); transition: color 0.15s; }
     .nav-links a:hover { color: var(--text); }
-    .nav-cta {
+    .nav-links a.nav-cta {
       padding: 8px 20px; background: var(--blue); color: #fff;
       border-radius: 8px; font-size: 14px; font-weight: 500;
       transition: background 0.15s;
     }
-    .nav-cta:hover { background: var(--blue-mid); }
+    .nav-links a.nav-cta:hover { background: var(--blue-mid); color: #fff; }
 
     /* ── SECTIONS ── */
     section { padding: 96px 48px; }
@@ -262,11 +262,22 @@
     }
     .about-img-placeholder::before {
       content: '';
-      position: absolute; inset: 0;
+      position: absolute; inset: 0; z-index: 1;
       background: linear-gradient(160deg, rgba(10,95,212,0.3) 0%, rgba(13,17,23,0.8) 100%);
     }
+    .about-img-main {
+      position: absolute; inset: 0; z-index: 0;
+      width: 100%; height: 100%; object-fit: cover;
+    }
+    .about-img-accent {
+      position: absolute; z-index: 2;
+      bottom: 20px; left: 20px;
+      width: 44%; aspect-ratio: 4/5; object-fit: cover;
+      border: 4px solid var(--cream); border-radius: 12px;
+      box-shadow: 0 16px 32px rgba(0,0,0,0.35);
+    }
     .about-img-label {
-      position: relative; z-index: 1; padding: 24px;
+      position: relative; z-index: 3; padding: 24px;
       font-family: var(--font-display); font-size: 28px; color: #fff; line-height: 1.2;
     }
     .about-img-label em { font-style: italic; color: #5ba4f5; }
@@ -539,7 +550,9 @@
     <div class="container">
       <div class="about-inner">
         <div class="about-img-placeholder">
-          <!-- Replace with your photo: <img src="your-photo.jpg" alt="Your name" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" /> -->
+          <!-- Drop ndur-action-1.jpg and ndur-action-2.jpg in the same folder as this file and they'll appear automatically. -->
+          <img class="about-img-main" src="ndur-action-1.jpg" alt="Athlete coached by Ndur racing a marathon" onerror="this.style.display='none';" />
+          <img class="about-img-accent" src="ndur-action-2.jpg" alt="Athlete coached by Ndur racing a marathon" onerror="this.style.display='none';" />
           <div class="about-img-label">Coaching<br>from <em>experience.</em></div>
         </div>
         <div>
